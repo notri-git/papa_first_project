@@ -2,46 +2,46 @@ print("ДОБРО ПОЖАЛОВАТЬ!")
 print("Команды: /help, /crypt, /decrypt, /exit")
 
 while True:
-    vvod = input()
+    vvod = input().strip()
 
     if vvod == "":
         continue
 
-    if vvod == "/help":
+    parts = vvod.split(" ", 1)
+
+    komanda = parts[0].lower()
+
+    if len(parts) > 1:
+        tekst = parts[1]
+    else:
+        tekst = ""
+
+    if komanda == "/help":
         print("/crypt текст - зашифровать")
         print("/decrypt текст - расшифровать")
         print("/exit - выход")
 
-    elif vvod == "/exit":
+    elif komanda == "/exit":
         print("Пока!")
         break
 
-    else:
-        komanda = ""
-        tekst = ""
-        probel_nayden = False
-
-        for bukva in vvod:
-            if bukva == " " and not probel_nayden:
-                probel_nayden = True
-            elif not probel_nayden:
-                komanda = komanda + bukva
-            else:
-                tekst = tekst + bukva
-
-        komanda = komanda.lower()
-
-        if komanda == "/crypt":
+    elif komanda == "/crypt":
+        if tekst == "":
+            print("Введите текст")
+        else:
             rezultat = ""
             for bukva in tekst:
                 rezultat = rezultat + chr(ord(bukva) + 3)
             print(rezultat)
 
-        elif komanda == "/decrypt":
+    elif komanda == "/decrypt":
+        if tekst == "":
+            print("Введите текст")
+        else:
             rezultat = ""
             for bukva in tekst:
                 rezultat = rezultat + chr(ord(bukva) - 3)
             print(rezultat)
 
-        else:
-            print("Команда не найдена. Введите /help")
+    else:
+        print("Команда не найдена. Введите /help")
