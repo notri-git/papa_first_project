@@ -9,8 +9,11 @@ from commands.system import dt
 
 from commands.weather import weather
 
+from config import COMMANDS
+from config import HELP_COMMANDS
+
 print("ДОБРО ПОЖАЛОВАТЬ!")
-print("Команды: /help, /crypt, /decrypt, /exit")
+print("Команды:", ", ".join(COMMANDS))
 
 while True:
     vvod = input().strip()
@@ -28,15 +31,8 @@ while True:
         tekst = ""
 
     if komanda == "/help":
-        print("/crypt текст - зашифровать")
-        print("/decrypt текст - расшифровать")
-        print("/os - информация о системе")
-        print("/hostname - имя компьютера")
-        print("/pwd - текущая папка")
-        print("/ls - список файлов")
-        print("/dt - дата и время")
-        print("/weather город - узнать погоду")
-        print("/exit - выход")
+        for command in HELP_COMMANDS:
+            print(command)
 
     elif komanda == "/exit":
         print("Пока!")
