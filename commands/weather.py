@@ -13,12 +13,10 @@ def weather(city):
     try:
         response = requests.get(url, params=params)
     except:
-        print("Не удалось подключиться к серверу")
-        return
+        return "Не удалось подключиться к серверу"
 
     if response.status_code != 200:
-        print("Не удалось получить данные о погоде")
-        return
+        return "Не удалось получить данные о погоде"
 
     data = response.json()
     temp = data["main"]["temp"] - 273.15
@@ -26,8 +24,11 @@ def weather(city):
     humidity = data["main"]["humidity"]
     wind = data["wind"]["speed"]
     description = data["weather"][0]["description"]
-    print("Температура:", round(temp, 1), "°C")
-    print("Ощущается как:", round(feels, 1), "°C")
-    print("Влажность:", humidity, "%")
-    print("Ветер:", wind, "м/с")
-    print("Погода:", description)
+
+    return (
+        f"Температура: {round(temp, 1)} °C\n"
+        f"Ощущается как: {round(feels, 1)} °C\n"
+        f"Влажность: {humidity} %\n"
+        f"Ветер: {wind} м/с\n"
+        f"Погода: {description}"
+    )
