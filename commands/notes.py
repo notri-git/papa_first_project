@@ -27,18 +27,21 @@ def add_note(text):
     })
 
     save_notes(notes)
-    print("Заметка создана. ID:", new_id)
+    return "Заметка создана. ID: " + str(new_id)
 
 
 def show_notes():
     notes = load_notes()
 
     if not notes:
-        print("Заметок нет")
-        return
+        return "Заметок нет"
+
+    result = ""
 
     for note in notes:
-        print(note["id"], "-", note["text"])
+        result += str(note["id"]) + " - " + note["text"] + "\n"
+
+    return result
 
 
 def show_note(note_id):
@@ -46,10 +49,9 @@ def show_note(note_id):
 
     for note in notes:
         if note["id"] == note_id:
-            print(note["id"], "-", note["text"])
-            return
+            return str(note["id"]) + " - " + note["text"]
 
-    print("Заметка не найдена")
+    return "Заметка не найдена"
 
 
 def delete_note(note_id):
@@ -59,21 +61,21 @@ def delete_note(note_id):
         if note["id"] == note_id:
             notes.remove(note)
             save_notes(notes)
-            print("Заметка удалена")
-            return
+            return "Заметка удалена"
 
-    print("Заметка не найдена")
+    return "Заметка не найдена"
 
 
 def search_notes(text):
     notes = load_notes()
 
-    found = False
+    result = ""
 
     for note in notes:
         if text.lower() in note["text"].lower():
-            print(note["id"], "-", note["text"])
-            found = True
+            result += str(note["id"]) + " - " + note["text"] + "\n"
 
-    if not found:
-        print("Ничего не найдено")
+    if result == "":
+        return "Ничего не найдено"
+
+    return result

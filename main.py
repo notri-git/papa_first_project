@@ -1,6 +1,8 @@
 from commands.crypto import crypt
 from commands.crypto import decrypt
 
+from bot.bot import main
+
 from commands.system import os_info
 from commands.system import hostname
 from commands.system import pwd
@@ -17,6 +19,9 @@ from commands.notes import search_notes
 
 from config import COMMANDS
 
+
+if __name__ == "__main__":
+    main()
 
 print("ДОБРО ПОЖАЛОВАТЬ!")
 print("Команды:")

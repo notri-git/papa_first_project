@@ -4,6 +4,7 @@ import os
 load_dotenv()
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 COMMANDS = [
     "/help - список команд",
