@@ -27,7 +27,21 @@ async def start_handler(message: Message):
 
 @dp.message(Command("help"))
 async def help_handler(message: Message):
-    await message.answer("Команды: /start, /help")
+    await message.answer(
+        "Команды:\n"
+        "/start\n"
+        "/help\n"
+        "/os\n"
+        "/hostname\n"
+        "/pwd\n"
+        "/dt\n"
+        "/weather <город>\n"
+        "/notes\n"
+        "/note add <текст>\n"
+        "/note <id>\n"
+        "/note del <id>\n"
+        "/search <текст>"
+    )
 
 
 @dp.message(Command("os"))
@@ -71,13 +85,13 @@ async def note_handler(message: Message):
     parts_note = message.text.split(" ", 2)
 
     if len(parts_note) < 2:
-        await message.answer("Введите команду")
+        await message.answer("Введите команду заметки")
 
     elif parts_note[1] == "add":
         if len(parts_note) > 2:
             await message.answer(add_note(parts_note[2]))
         else:
-            await message.answer("Введите текст")
+            await message.answer("Введите текст заметки")
 
     elif parts_note[1] == "del":
         if len(parts_note) > 2:
@@ -94,7 +108,7 @@ async def note_handler(message: Message):
         await message.answer(show_note(note_id))
 
     else:
-        await message.answer("Неизвестная команда")
+        await message.answer("Неизвестная команда заметки")
 
 
 @dp.message(Command("search"))
