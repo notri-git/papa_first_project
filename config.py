@@ -4,6 +4,21 @@ import os
 load_dotenv()
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
+
+COMMANDS = [
+    "/help",
+    "/crypt",
+    "/decrypt",
+    "/os",
+    "/hostname",
+    "/pwd",
+    "/ls",
+    "/dt",
+    "/weather",
+    "/exit"
+]
+
+HELP_COMMANDS = [
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 COMMANDS = [
@@ -16,10 +31,5 @@ COMMANDS = [
     "/ls - список файлов",
     "/dt - дата и время",
     "/weather город - узнать погоду",
-    "/note add текст - добавить заметку",
-    "/note ID - показать заметку",
-    "/note del ID - удалить заметку",
-    "/notes - показать все заметки",
-    "/search текст - поиск заметок",
     "/exit - выход"
 ]

@@ -11,6 +11,11 @@ from commands.system import dt
 
 from commands.weather import weather
 
+from config import COMMANDS
+from config import HELP_COMMANDS
+
+print("ДОБРО ПОЖАЛОВАТЬ!")
+print("Команды:", ", ".join(COMMANDS))
 from commands.notes import add_note
 from commands.notes import show_notes
 from commands.notes import show_note
@@ -46,6 +51,7 @@ while True:
         tekst = ""
 
     if komanda == "/help":
+        for command in HELP_COMMANDS:
         for command in COMMANDS:
             print(command)
 
