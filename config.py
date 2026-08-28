@@ -19,6 +19,9 @@ COMMANDS = [
 ]
 
 HELP_COMMANDS = [
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+COMMANDS = [
     "/help - список команд",
     "/crypt текст - зашифровать",
     "/decrypt текст - расшифровать",
