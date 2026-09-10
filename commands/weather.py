@@ -19,16 +19,19 @@ def weather(city):
         return "Не удалось получить данные о погоде"
 
     data = response.json()
+
     temp = data["main"]["temp"] - 273.15
     feels = data["main"]["feels_like"] - 273.15
     humidity = data["main"]["humidity"]
     wind = data["wind"]["speed"]
     description = data["weather"][0]["description"]
 
-    return (
-        f"Температура: {round(temp, 1)} °C\n"
-        f"Ощущается как: {round(feels, 1)} °C\n"
-        f"Влажность: {humidity} %\n"
-        f"Ветер: {wind} м/с\n"
-        f"Погода: {description}"
+    result = (
+        "Температура: " + str(round(temp, 1)) + " °C\n"
+        "Ощущается как: " + str(round(feels, 1)) + " °C\n"
+        "Влажность: " + str(humidity) + " %\n"
+        "Ветер: " + str(wind) + " м/с\n"
+        "Погода: " + description
     )
+
+    return result
