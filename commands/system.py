@@ -5,25 +5,24 @@ import datetime
 
 
 def os_info():
-    print(platform.system())
+    return platform.system()
 
 
 def hostname():
-    print(socket.gethostname())
+    return socket.gethostname()
 
 
 def pwd():
-    print(os.getcwd())
+    return os.getcwd()
 
 
 def ls():
     files = os.listdir()
 
-    for file in files:
-        print(file)
+    return "\n".join(files)
 
 
 def dt():
     now = datetime.datetime.now()
 
-    print(now.strftime("%d.%m.%Y %H:%M:%S"))
+    return now.strftime("%d.%m.%Y %H:%M:%S")

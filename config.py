@@ -1,10 +1,15 @@
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
+
 
 load_dotenv()
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
+OLLAMA_MODEL = "gpt-oss:120b-cloud"
+
 
 COMMANDS = [
     "/help - список команд",
