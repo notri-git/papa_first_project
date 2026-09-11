@@ -1,3 +1,5 @@
+from ollama import Client
+
 from commands.crypto import crypt
 from commands.crypto import decrypt
 
@@ -16,6 +18,8 @@ from commands.notes import delete_note
 from commands.notes import search_notes
 
 from config import COMMANDS
+from config import OLLAMA_API_KEY
+from config import OLLAMA_MODEL
 
 
 class Assistant:
@@ -35,7 +39,14 @@ class Assistant:
         else:
             text = ""
 
+        if command.startswith("/"):
+            return self.process_command(command, text)
 
+        return self.ask_ai(message)
+
+    def process_command(self, command, text):
+
+        if command == "/help":
             return "\n".join(COMMANDS)
 
         elif command == "/exit":
@@ -113,6 +124,31 @@ class Assistant:
             return search_notes(text)
 
         return "Команда не найдена. Введите /help"
+
+    def ask_ai(self, message):
+
+        try:
+            client = Client(
+                host="https://ollama.com",
+                headers={
+                    "Authorization": "Bearer " + OLLAMA_API_KEY
+                }
+            )
+
+            response = client.chat(
+                model=OLLAMA_MODEL,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": message
+                    }
+                ]
+            )
+
+            return response["message"]["content"]
+
+        except Exception:
+            return "AI отдыхает, попробуй позже"
 
     def output(self, result):
         pass
