@@ -1,8 +1,7 @@
-from commands.crypto import crypt
-from commands.crypto import decrypt
+from console_assistant import ConsoleAssistant
 
-from bot.bot import main
 
+assistant = ConsoleAssistant()
 from commands.system import os_info
 from commands.system import hostname
 from commands.system import pwd
@@ -31,11 +30,12 @@ if __name__ == "__main__":
 print("ДОБРО ПОЖАЛОВАТЬ!")
 print("Команды:")
 
-for command in COMMANDS:
-    print(command)
+result = assistant.process_message("/help")
+assistant.output(result)
 
 
 while True:
+    vvod = input()
     vvod = input().strip()
 
     if vvod == "":
@@ -121,14 +121,10 @@ while True:
         else:
             print("Неизвестная команда заметки")
 
-    elif komanda == "/notes":
-        show_notes()
+    result = assistant.process_message(vvod)
 
-    elif komanda == "/search":
-        if tekst == "":
-            print("Введите текст для поиска")
-        else:
-            search_notes(tekst)
+    if result != "":
+        assistant.output(result)
 
-    else:
-        print("Команда не найдена. Введите /help")
+    if vvod.strip().lower() == "/exit":
+        break
