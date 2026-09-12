@@ -1,25 +1,15 @@
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
+
 
 load_dotenv()
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
-COMMANDS = [
-    "/help",
-    "/crypt",
-    "/decrypt",
-    "/os",
-    "/hostname",
-    "/pwd",
-    "/ls",
-    "/dt",
-    "/weather",
-    "/exit"
-]
+OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
+OLLAMA_MODEL = "gpt-oss:120b-cloud"
 
-HELP_COMMANDS = [
-BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 COMMANDS = [
     "/help - список команд",
@@ -31,5 +21,10 @@ COMMANDS = [
     "/ls - список файлов",
     "/dt - дата и время",
     "/weather город - узнать погоду",
+    "/note add текст - добавить заметку",
+    "/note ID - показать заметку",
+    "/note del ID - удалить заметку",
+    "/notes - показать все заметки",
+    "/search текст - поиск заметок",
     "/exit - выход"
 ]
