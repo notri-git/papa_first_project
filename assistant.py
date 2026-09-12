@@ -148,7 +148,7 @@ class Assistant:
             return response["message"]["content"]
 
         except Exception:
-            return "AI отдыхает, попробуй позже"
+            return "AI сломался печаль попробуй позже"
 
     def output(self, result):
         pass
